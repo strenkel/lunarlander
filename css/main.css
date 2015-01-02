@@ -1,0 +1,38 @@
+html {
+  height: 100%;
+  font-size: 64px;
+  font-family: sans-serif;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+.display {
+  display: table;
+  height: 90%;
+  margin: 0 auto;
+}
+
+.display-center {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#label {
+  margin-bottom: 130px;
+}
+
+#start {
+  color: white;
+  background-color: black;
+  font-family: sans-serif;
+  height: 70px;
+  width: 200px;
+  font-size: 38px;
+  cursor: pointer;
+}

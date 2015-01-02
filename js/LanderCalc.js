@@ -4,7 +4,7 @@ var LanderCalc = (function() {
 
   // gravitation moon (m/s**2)
   var gMoon = 1.622;
-  var iterations = 100;
+  var iterations = 1000;
   
   var LanderCalc = function(p) {
   
@@ -21,13 +21,13 @@ var LanderCalc = (function() {
     var v = p.v || 1000; // velocity (m/s)
     var fuel = p.fuel || 1000; // kg
     
-    // Calculate v by the Tsiolkovsky rocket equation
-    // and gravitation.
-    // To calculate h we need to integrate the rocket/graviation equation.
-    // We do this by iteration.
+    // Calculate v by Tsiolkovsky rocket equation and gravitation.
+    // To calculate h we need to integrate the rocket/gravitation equation.
+    // We do this by approximation/iteration.
     this.next = function(fuelUsed) {
     
       fuelUsed = fuelUsed || 0;
+      fuelUsed = Math.min(fuelUsed, fuel); 
     
       var tDelta = t / iterations;
       var fuelDelta = fuelUsed / iterations;
@@ -39,7 +39,11 @@ var LanderCalc = (function() {
         h = h - vMean * tDelta;
         v = vNext;
         fuel = fuel - fuelDelta;
+        if (h <= 0) {
+          return true;
+        }
       };
+      return false;
     };
     
     this.getData = function() {
