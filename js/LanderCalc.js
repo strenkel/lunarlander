@@ -19,7 +19,7 @@ var LanderCalc = (function() {
     // var
     var h = p.h || 25000; // height (m)
     var v = p.v || 1000; // velocity (m/s)
-    var fuel = p.fuel || 1000; // kg
+    var fuel = p.fuel || 1000; // l
     
     // Calculate v by Tsiolkovsky rocket equation and gravitation.
     // To calculate h we need to integrate the rocket/gravitation equation.
@@ -27,6 +27,7 @@ var LanderCalc = (function() {
     this.next = function(fuelUsed) {
     
       fuelUsed = fuelUsed || 0;
+      fuelUsed = Math.max(fuelUsed, 0);
       fuelUsed = Math.min(fuelUsed, fuel); 
     
       var tDelta = t / iterations;
@@ -53,7 +54,18 @@ var LanderCalc = (function() {
         fuel: fuel
       } 
     };
-     
+
+    this.getHeight = function() {
+      return h;
+    };
+
+    this.getSpeed = function() {
+      return v;
+    };
+
+    this.getFuel = function() {
+      return fuel;
+    };
   }
 
   return LanderCalc;

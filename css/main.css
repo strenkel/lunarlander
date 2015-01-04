@@ -13,7 +13,7 @@ body {
 
 .display {
   display: table;
-  height: 90%;
+  height: 93%;
   margin: 0 auto;
 }
 
@@ -35,4 +35,19 @@ body {
   width: 200px;
   font-size: 38px;
   cursor: pointer;
+}
+
+#fuel-input {
+  color: white;
+  background-color: black;
+  font-family: sans-serif;
+  height: 90px;
+  width: 200px;
+  font-size: 64px;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.templates {
+  display: none;
 }
