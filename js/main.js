@@ -9,6 +9,8 @@
   var fuelInputNode;
   var landerMath;
   
+  var delay = 2500; 
+  
   var showStartPage = function() {
     showLabel("Lunar Lander");
     showStartButton();
@@ -26,16 +28,29 @@
   
   var showFuel = function() {
     hideLabel();
-    showValue(landerMath.getFuel(), "l");
+    showValue(landerMath.getFuel(), "kg");
   };
   
   var showFuelInput = function() {
     clearContentNode();
     createFuelInput();
     contentNode.appendChild(fuelInputNode);
-    var unity = document.createTextNode(" l");
+    var unity = document.createTextNode(" kg");
     contentNode.appendChild(unity);
     fuelInputNode.focus();
+  };
+  
+  var showResult = function() {
+    var v = landerMath.getSpeed();
+    var label;
+    if (v <= 3) {
+      label = "Landed";
+    } else {
+      label = "Crashed";
+    }
+    label = label + " with " + toLocaleString(v) + " m/s!"
+    showLabel(label);
+    showStartButton("Restart");
   };
   
   var showLabel = function(label) {
@@ -48,23 +63,35 @@
   };
   
   var showValue = function(value, unity) {
-    var rounded = Math.round(value);
-    contentNode.innerHTML = rounded.toLocaleString() + " " + unity;
+    contentNode.innerHTML = toLocaleString(value) + " " + unity;
   };
   
-  var showStartButton = function() {
+  var toLocaleString = function(value) {
+    var roundedValue;
+    if (value < 10) {
+      roundedValue = Math.round(value * 10) / 10;
+    } else {
+      roundedValue = Math.round(value);
+    }
+    return roundedValue.toLocaleString();
+  };
+  
+  var showStartButton = function(value) {
     clearContentNode();
-    contentNode.appendChild(createStartButton());
+    contentNode.appendChild(createStartButton(value));
   };
   
   var clearContentNode = function() {
     contentNode.innerHTML = "";
   };
   
-  var createStartButton = function() {
+  var createStartButton = function(value) {
     var startButton = startButtonTemplate.cloneNode();
     startButton.id = "start";
     startButton.onclick = startGame;
+    if (value) {
+      startButton.value = value;
+    }
     return startButton;
   };
   
@@ -74,17 +101,22 @@
   };
   
   var startGame = function() {
-    landerMath = new LanderCalc();
+    landerMath = new LanderMath();
     land();
   };
   
   var getFuelInput = function() {
-    return parseFloat(fuelInputNode.value);
+    // accept dot or comma as decimal separator
+    return parseFloat(fuelInputNode.value.replace(",", "."));
   };
  
   var brake = function() {
     landerMath.next(getFuelInput());
-    land();
+    if (landerMath.isLanded()) {
+      showResult();
+    } else {
+      land();
+    }
   };
 
   var land = function() {
@@ -92,11 +124,10 @@
     var promise0 = waitAndDo(showSpeed);
     var promise1 = waitAndDo(showFuel, promise0);
     var promise2 = waitAndDo(showFuelInput, promise1);
-    var promise3 = waitAndDo(brake, promise2, 3000);
+    var promise3 = waitAndDo(brake, promise2);
   };
   
-  var waitAndDo = function(callback, promise, time) {
-    time = time || 1000;
+  var waitAndDo = function(callback, promise) {
     if (promise == null) {
       promise = new Promise(function(resolve) {
         resolve();
@@ -107,7 +138,7 @@
         setTimeout(function() {
           callback();
           resolve();
-        }, time);
+        }, delay);
       });
     });
     return newPromise;

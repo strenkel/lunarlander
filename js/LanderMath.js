@@ -1,4 +1,4 @@
-var LanderCalc = (function() {
+var LanderMath = (function() {
 
   "use strict";
 
@@ -6,20 +6,23 @@ var LanderCalc = (function() {
   var gMoon = 1.622;
   var iterations = 1000;
   
-  var LanderCalc = function(p) {
+  var LanderMath = function(p) {
   
     p = p || {};
   
     // const
     var g = p.g || gMoon; // gravitation (m/s**2)
-    var m = p.m || 1000; // mass (kg; without fuel)
+    var m = p.m || 3000; // mass (kg; without fuel)
     var ve = p.ve || 3000; // exit velocity (m/s)
-    var t = p.t || 1; // burning period (s)
+    var t = p.t || 10; // burning period (s)
+    
+    // add some random sugar
+    m = m + Math.random() * 500;
     
     // var
-    var h = p.h || 25000; // height (m)
+    var h = p.h || 30000; // height (m)
     var v = p.v || 1000; // velocity (m/s)
-    var fuel = p.fuel || 1000; // l
+    var fuel = p.fuel || 2000; // kg
     
     // Calculate v by Tsiolkovsky rocket equation and gravitation.
     // To calculate h we need to integrate the rocket/gravitation equation.
@@ -34,27 +37,18 @@ var LanderCalc = (function() {
       var fuelDelta = fuelUsed / iterations;
       
       for (var i=0; i < iterations; i++) {
+        if (h <= 0) {
+          break;
+        }
         var mTotal = m + fuel;
         var vNext = v - 3000 * Math.log(mTotal / (mTotal - fuelDelta)) + g * tDelta;
         var vMean = (v + vNext) / 2;
         h = h - vMean * tDelta;
         v = vNext;
         fuel = fuel - fuelDelta;
-        if (h <= 0) {
-          return true;
-        }
       };
-      return false;
     };
     
-    this.getData = function() {
-      return {
-        h: h,
-        v: v,
-        fuel: fuel
-      } 
-    };
-
     this.getHeight = function() {
       return h;
     };
@@ -66,8 +60,12 @@ var LanderCalc = (function() {
     this.getFuel = function() {
       return fuel;
     };
+    
+    this.isLanded = function() {
+      return h <=0;
+    };
   }
 
-  return LanderCalc;
+  return LanderMath;
 
 })();
