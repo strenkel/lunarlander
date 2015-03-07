@@ -36,9 +36,28 @@ body {
   line-height: 2em;
 }
 
+.keyboard {
+  position: absolute;
+  bottom: 2em;
+  width: 100%;
+}
+
+.keyboard div {
+ text-align: center;
+ margin-top: 2em;
+ margin-bottom: 2em;
+}
+
+.keyboard span {
+  /*border: 1px solid white;*/
+  background-color: white;
+  color: black;
+  padding: 0.8em 1em;
+}
+
 .content {
   display: table;
-  height: 95%;
+  height: 98%;
   margin: 0 auto;
 }
 
@@ -59,7 +78,7 @@ body {
 }
 
 #start {
-  height: 2em;
+  line-height: 2em;
   padding-left: 1.5em;
   padding-right: 1.5em;
   font-size: 1em;
