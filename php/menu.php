@@ -1,17 +1,11 @@
-<div class="menu">
+<nav class="menu">
   <span>
-    <a href="contact.php">Contact</a>
-  </span>
-  <span>
-    <a href="math.php">Math</a>
+    <a href="index.php">Start</a>
   </span>
   <span>
     <a href="help.php">Help</a>
   </span>
-   <span>
-     <a href="setting.php">Settings</a>
+  <span>
+    <a href="contact.php">Contact</a>
   </span>
-   <span>
-    <a href="index.php">Start</a>
-  </span>
-</div>
+</nav>

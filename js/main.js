@@ -3,8 +3,8 @@
   "use strict";
   
   var startButtonTemplate = document.getElementById("start-template");
-  var labelNode = document.getElementById("label");
-  var contentNode = document.getElementById("content");
+  var labelNode = document.getElementById("text");
+  var contentNode = document.getElementById("control");
   var fuelInputNodeTemplate = document.getElementById("fuel-input-template");
   var fuelInputNode;
   var landerMath;
@@ -12,7 +12,7 @@
   var delay = 2500; 
   
   var showStartPage = function() {
-    showLabel("Lunar Lander");
+    hideLabel();
     showStartButton();
   };
   
@@ -42,14 +42,15 @@
   
   var showResult = function() {
     var v = landerMath.getSpeed();
-    var label;
+    var speedLabel;
     if (v <= 3) {
-      label = "Landed";
+      speedLabel = "Landed";
     } else {
-      label = "Crashed";
+      speedLabel = "Crashed";
     }
-    label = label + " with " + toLocaleString(v) + " m/s!"
-    showLabel(label);
+    speedLabel = speedLabel + " with " + toLocaleString(v) + " m/s!";
+    var fuelLabel = toLocaleString(landerMath.getFuel()) + " kg of fuel left.";
+    showLabel(speedLabel + "<br>" + fuelLabel);
     showStartButton("Restart");
   };
   
