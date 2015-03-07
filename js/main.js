@@ -69,7 +69,7 @@
   
   var toLocaleString = function(value) {
     var roundedValue;
-    if (value < 10) {
+    if (value < 10 && value > -10) {
       roundedValue = Math.round(value * 10) / 10;
     } else {
       roundedValue = Math.round(value);

@@ -11,7 +11,9 @@
     <div class="content">
       <div class="content-center">
         <div id="text" class="text short">
-          Stefan Trenkel &#8226; Tannhäuserplatz 3 &#8226; 28205 Bremen &#8226; Germany<br>
+          Stefan Trenkel<br>
+          Tannhäuserplatz 3<br>28205 Bremen<br>
+          Germany<br>
           info (at) stefantrenkel.de<br>
           <a href="http://www.stefantrenkel.de">www.stefantrenkel.de</a>
         </div>
