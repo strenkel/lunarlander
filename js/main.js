@@ -5,11 +5,25 @@
   var startButtonTemplate = document.getElementById("start-template");
   var labelNode = document.getElementById("text");
   var contentNode = document.getElementById("control");
+  var keyboardNode = document.getElementById("keyboard");
   var fuelInputNodeTemplate = document.getElementById("fuel-input-template");
+  
   var fuelInputNode;
   var landerMath;
   
+  var isTouch = 'ontouchstart' in window;
+  
   var delay = 2500; 
+  
+  var initKeyboard = function() {
+    for (var i=0; i < 10; i++) {
+      document.getElementById("nr" + i).ontouchstart = (function(nr) {
+        return function() {
+          fuelInputNode.value = fuelInputNode.value + nr;
+        }
+      })(i);
+    }
+  }
   
   var showStartPage = function() {
     hideLabel();
@@ -41,6 +55,7 @@
   };
   
   var showResult = function() {
+    hideLabel();
     var v = landerMath.getSpeed();
     var speedLabel;
     if (v <= 3) {
@@ -61,6 +76,7 @@
   
   var hideLabel = function() {
     labelNode.style.display = "none";
+    keyboardNode.style.display = "none";
   };
   
   var showValue = function(value, unity) {
@@ -99,6 +115,10 @@
   var createFuelInput = function() {
     fuelInputNode = fuelInputNodeTemplate.cloneNode();
     fuelInputNode.id = "fuel-input";
+    if (isTouch) {
+      fuelInputNode.readOnly = true;
+      keyboardNode.style.display = "block";
+    }
   };
   
   var startGame = function() {
@@ -144,6 +164,10 @@
     });
     return newPromise;
   };
+  
+  if (isTouch) {
+    initKeyboard();
+  }
   
   showStartPage();
   

@@ -12,30 +12,26 @@
       <div class="content-center">
         <div id="text" class="text title"></div>
         <div id="control" class="control"></div>
+        
+        <div id="keyboard" class="keyboard">
+          <div>
+            <span id="nr1">1</span><span id="nr2">2</span><span id="nr3">3</span><span id="nr4">4</span><span id="nr5">5</span>
+          </div>
+          <div>
+            <span id="nr6">6</span><span id="nr7">7</span><span id="nr8">8</span><span id="nr9">9</span><span id="nr0">0</span>
+          </div>
+        </div>
+        
       </div>
     </div>
 
     <div class="templates">
       <input id="start-template" class="input" type="button" value="Start"/>
-      <input id="fuel-input-template" class="input" type="text" pattern="[0-9]*"/>
+      <input id="fuel-input-template" class="input" type="text"/>
+      
     </div>
 
-    <div class="keyboard">
-      <div>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
-      </div>
-      <div>
-        <span>6</span>
-        <span>7</span>
-        <span>8</span>
-        <span>9</span>
-        <span>0</span>
-      </div>
-    </div>
+    
 
   </body>
   

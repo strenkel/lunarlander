@@ -4,10 +4,10 @@
       <a href="index.php">Start</a>
     </span>
     <span>
-      <a href="help.php">Help</a>
+      <a href="help.php">Info</a>
     </span>
     <span>
-      <a href="contact.php">Contact</a>
+      <a href="contact.php">About</a>
     </span>
   </div>
 </nav>
