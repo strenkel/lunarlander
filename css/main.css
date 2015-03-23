@@ -39,7 +39,6 @@ body {
 .keyboard {
   display: none;
   margin-top: 3em;
-  margin-top: 3em;
   width: 100%;
 }
 
@@ -53,19 +52,18 @@ body {
   border: 1px solid white;
   width: 20%;
   margin: -1px;
-  max-width: 7em;
+  max-width: 6em;
 }
 
 .content {
   display: table;
-  height: 95%;
+  height: 90%;
   width: 100%;
-
 }
 
 .content-center {
-  padding-top: 5em;
-  padding-bottom: 5em;
+  padding-top: 4em;
+  padding-bottom: 0.5em;
   padding-left: 1em;
   padding-right: 1em;
   display: table-cell;
@@ -105,7 +103,7 @@ body {
 
 .text.title {
   font-size: 1.5em;
-  margin-bottom: 40px;
+  margin-bottom: 1.7em;
 }
 
 .text.long {
