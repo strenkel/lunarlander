@@ -21,18 +21,18 @@
           Eine Landung mit einer Geschwindigkeit unter 3 m/s gilt
           als Erfolg, darüber als Crash.
           <br><br>
-          Die Berechnungen basieren auf der
-          <a href="http://de.wikipedia.org/wiki/Raketengrundgleichung">Raketengrundgleichung</a>
-          und dem <a href="http://de.wikipedia.org/wiki/Freier_Fall">freien Fall</a>. Zugrunde liegt
-          dabei die Gravitation des Mondes von 1.622 m/s**2, eine Austrittsgeschwindigkeit des
-          Treibstoffes von 3.000 m/s und ein Fährenleergewicht von 5.000 kg.
-          <br><br>
           <a href="http://www.technologizer.com/2009/07/19/lunar-lander/">Lunar Lander</a> wurde 1969 von
           <a href="http://www.cs.brandeis.edu/~storer/">Jim Storer</a> geschrieben.
           Es ist eines der einflußreichsten Computerspiele aller Zeiten.
           Ich selbst habe es in den 70ziger Jahren auf einem
           <a href="http://www.hpmuseum.org/">HP Taschenrechner</a> kennen gelernt. Die hier vorgestellte Browser-Version
           ist dieser Taschenrechner-Version nachempfunden.
+          <br><br>
+          Die Berechnungen basieren auf der
+          <a href="http://de.wikipedia.org/wiki/Raketengrundgleichung">Raketengrundgleichung</a>
+          und dem <a href="http://de.wikipedia.org/wiki/Freier_Fall">freien Fall</a>. Zugrunde liegt
+          dabei die Gravitation des Mondes von 1.622 m/s**2, eine Austrittsgeschwindigkeit des
+          Treibstoffes von 3.000 m/s und ein Fährenleergewicht von 5.000 kg.
         </div>
       </div>
     </div>
