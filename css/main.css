@@ -11,6 +11,31 @@ body {
   color: white;
 }
 
+input, select {
+  color: white;
+  background-color: black;
+  font-family: sans-serif;
+  border: 2px solid white;
+}
+
+select {
+text-align: center;
+  font-size: 2em;
+  height: 2.2em;
+  width: 12em;
+  
+}
+
+select option {
+  padding-top: 0.2em;
+  height: 1.4em;
+  border-right: 1px solid white;
+}
+
+select option:last-child {
+  border-bottom: 1px solid white;
+}
+
 .menu {
   position: absolute;
   background-color: white;
@@ -31,7 +56,7 @@ body {
 
 .menu span {
   display: inline-block;
-  width: 32%;
+  width: 23%;
   text-align: center;
   line-height: 2em;
 }
@@ -69,12 +94,6 @@ body {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-}
-
-.input {
-  color: white;
-  background-color: black;
-  font-family: sans-serif;
 }
 
 #start {

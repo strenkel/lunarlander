@@ -3,7 +3,7 @@ var LanderMath = (function() {
   "use strict";
 
   // gravitation moon (m/s**2)
-  var gMoon = 1.622;
+  var gMoon = 9.807;
   var iterations = 1000;
   
   var LanderMath = function(p) {
@@ -19,7 +19,7 @@ var LanderMath = (function() {
     // var
     var h = p.h || 30000; // height (m)
     var v = p.v || 1000; // velocity (m/s)
-    var fuel = p.fuel || 3000; // kg
+    var fuel = p.fuel || 19000; // kg
     
     // Calculate v by Tsiolkovsky rocket equation and gravitation.
     // To calculate h we need to integrate the rocket/gravitation equation.

@@ -145,7 +145,7 @@
     var promise0 = waitAndDo(showSpeed);
     var promise1 = waitAndDo(showFuel, promise0);
     var promise2 = waitAndDo(showFuelInput, promise1);
-    var promise3 = waitAndDo(brake, promise2);
+    waitAndDo(brake, promise2);
   };
   
   var waitAndDo = function(callback, promise) {
