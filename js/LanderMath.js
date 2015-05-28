@@ -3,23 +3,21 @@ var LanderMath = (function() {
   "use strict";
 
   // gravitation moon (m/s**2)
-  var gMoon = 9.807;
+  var gMoon = 1.622;
   var iterations = 1000;
   
-  var LanderMath = function(p) {
-  
-    p = p || {};
+  var LanderMath = function() {
   
     // const
-    var g = p.g || gMoon; // gravitation (m/s**2)
-    var m = p.m || 5000; // mass (kg; without fuel)
-    var ve = p.ve || 3000; // exit velocity (m/s)
-    var t = p.t || 10; // burning period (s)
+    var g = localStorage.getItem("g") || gMoon; // gravitation (m/s**2)
+    var m = 5000; // mass (kg; without fuel)
+    var ve = 3000; // exit velocity (m/s)
+    var t = 10; // burning period (s)
     
     // var
-    var h = p.h || 30000; // height (m)
-    var v = p.v || 1000; // velocity (m/s)
-    var fuel = p.fuel || 19000; // kg
+    var h = 30000; // height (m)
+    var v = 1000; // velocity (m/s)
+    var fuel = localStorage.getItem("fuel") || 3000; // kg
     
     // Calculate v by Tsiolkovsky rocket equation and gravitation.
     // To calculate h we need to integrate the rocket/gravitation equation.
