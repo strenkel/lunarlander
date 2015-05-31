@@ -4,18 +4,18 @@
   
   var planets = [{
     id: "moon",
-    g: 1.622,
+    g: 1.62,
     fuel: 3000,
-    label: "Moon (g=1.622)"
+    label: "Moon (g=1.62)"
   },{
     id: "mars",
     g: 3.69,
     fuel: 6000,
-    label: "Mars (g=3.69400)"
+    label: "Mars (g=3.69)"
   },{
     id: "venus",
     g: 8.87,
-    fuel: 20000,
+    fuel: 18000,
     label: "Venus (g=8.87)"
   },{
     id: "kepler10b",

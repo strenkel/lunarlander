@@ -3,7 +3,7 @@ var LanderMath = (function() {
   "use strict";
 
   // gravitation moon (m/s**2)
-  var gMoon = 1.622;
+  var gMoon = 1.62;
   var iterations = 1000;
   
   var LanderMath = function() {

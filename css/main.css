@@ -19,11 +19,10 @@ input, select {
 }
 
 select {
-text-align: center;
-  font-size: 2em;
+  text-align: center;
+  font-size: 1.8em;
   height: 2.2em;
-  width: 12em;
-  
+  width: 10em;
 }
 
 select option {
@@ -130,6 +129,7 @@ select option:last-child {
   max-width: 33em;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 2em;
 }
 
 .control {
