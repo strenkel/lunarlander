@@ -126,7 +126,7 @@ select option:last-child {
 
 .text.long {
   line-height: 1.8em;
-  max-width: 33em;
+  max-width: 40em;
   margin-left: auto;
   margin-right: auto;
   padding-top: 2em;
