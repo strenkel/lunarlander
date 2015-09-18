@@ -10,12 +10,12 @@
   },{
     id: "mars",
     g: 3.69,
-    fuel: 6000,
+    fuel: 5000,
     label: "Mars (g=3.69)"
   },{
     id: "venus",
     g: 8.87,
-    fuel: 18000,
+    fuel: 15000,
     label: "Venus (g=8.87)"
   },{
     id: "kepler10b",
