@@ -1,26 +1,62 @@
 (function() {
 
   "use strict";
-  
-  var isGerman = function() {
+
+  // --- variables and methods ---
+
+  var defaultLanguage = "en";
+
+  var getBrowserLocale = function() {
     if (navigator != null) {
-      return "de" === (navigator.language || navigator.userLanguage);
+      return navigator.language || navigator.userLanguage;
+    }
+    return defaultLanguage;
+  };
+
+  var isGerman = function(locale) {
+    if (locale != null) {
+      return locale.slice(0,2) === "de";
     }
     return false;
   };
-  
-  var hideGerman = function() {
+
+  var showGerman = function() {
+    document.getElementById("text-en").style.display = "none";
+    document.getElementById("text-de").style.display = "block";
+  };
+
+  var showEnglish = function() {
+    document.getElementById("text-en").style.display = "block";
     document.getElementById("text-de").style.display = "none";
   };
-  
-  var hideEnglish = function() {
-    document.getElementById("text-en").style.display = "none";
+
+  var chooseLanguage = function(locale) {
+    if (isGerman(locale)) {
+      showGerman();
+    } else {
+      showEnglish();
+    }
   };
-  
-  if (isGerman()) {
-    hideEnglish();
+
+  // --- main ---
+
+  chooseLanguage(defaultLanguage);
+
+  if (navigator.globalization !== undefined) {
+    // phonegap
+    navigator.globalization.getLocaleName(
+      function (locale) {
+        if (locale !== undefined) {
+          chooseLanguage(locale.value);
+        }
+      },
+      function () {
+        // nothing to do
+      }
+    );
   } else {
-    hideGerman();
+    // browser
+    chooseLanguage(getBrowserLocale());
   }
-  
+
 })();
