@@ -132,6 +132,13 @@ select option:last-child {
   padding-top: 2em;
 }
 
+#language-switch {
+  text-align: right;
+  cursor: pointer;
+  font-size: 0.5em;
+  max-width: 80em;
+}
+
 .control {
   font-size: 2em;
 }

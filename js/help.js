@@ -5,6 +5,10 @@
   // --- variables and methods ---
 
   var defaultLanguage = "en";
+  var actualLanguage = defaultLanguage;
+  var textEn = document.getElementById("text-en");
+  var textDe = document.getElementById("text-de");
+  var languageSwitch = document.getElementById("language-switch");
 
   var getBrowserLocale = function() {
     if (navigator != null) {
@@ -21,13 +25,23 @@
   };
 
   var showGerman = function() {
-    document.getElementById("text-en").style.display = "none";
-    document.getElementById("text-de").style.display = "block";
+    textEn.style.display = "none";
+    textDe.style.display = "block";
+    actualLanguage = "de";
   };
 
   var showEnglish = function() {
-    document.getElementById("text-en").style.display = "block";
-    document.getElementById("text-de").style.display = "none";
+    textEn.style.display = "block";
+    textDe.style.display = "none";
+    actualLanguage = "en";
+  };
+
+  var switchLanguage = function() {
+    if (actualLanguage === "en") {
+      showGerman();
+    } else {
+      showEnglish();
+    }
   };
 
   var chooseLanguage = function(locale) {
@@ -58,5 +72,7 @@
     // browser
     chooseLanguage(getBrowserLocale());
   }
+
+  languageSwitch.onclick = switchLanguage;
 
 })();
