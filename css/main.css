@@ -147,6 +147,18 @@ select option:last-child {
   color: white;
 }
 
+.quotation {
+ text-align: left;
+ font-family: monospace;
+ line-height: 1.8em;
+}
+
+.author {
+  text-align: right;
+  font-style: italic;
+  font-size: 0.7em;
+}
+
 @media (max-height: 30em) {
   .keyboard {
     margin-top: 3em;
