@@ -13,7 +13,8 @@
   
   var isTouch = 'ontouchstart' in window;
   
-  var delay = 2500; 
+  var cycle = parseInt(localStorage.getItem("cycle") || 10);
+  var delay = (cycle / 4) * 1000;
   
   var initKeyboard = function() {
     for (var i=0; i < 10; i++) {

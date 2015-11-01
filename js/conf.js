@@ -29,39 +29,112 @@
     label: "Kepler-30c (g=30)"
   }];
   
-   var fillSelect = function() {
+  var cycles = [{
+    id: "c4",
+    time: 4,
+    label: "Cycle = 4 sec"
+  },{
+    id: "c6",
+    time: 6,
+    label: "Cycle = 6 sec"
+  },{
+    id: "c8",
+    time: 8,
+    label: "Cycle = 8 sec"
+  },{
+    id: "c10",
+    time: 10,
+    label: "Cycle = 10 sec",
+    isDefault: true
+  }];
+
+  var fillPlanetSelection = function() {
     planets.forEach(function(planet) {
-      addOption(planet);
+      addPlanetOption(planet);
     });
   };
-  
-  var addOption = function(planet) {
-    select.appendChild(createOption(planet));
+
+  var fillCycleSelection = function() {
+    cycles.forEach(function(cycle) {
+      addCycleOption(cycle);
+    });
   };
-  
-  var createOption = function(planet) {
-    var option = document.createElement("option");
-    option.text = planet.label;
-    option.planet = planet;
-    if (planet.id === localStorage.getItem("planetId")) {
+
+  var addPlanetOption = function(planet) {
+    planetSelection.appendChild(createPlanetOption(planet));
+  };
+
+  var addCycleOption = function(planet) {
+    cycleSelection.appendChild(createCyleOption(planet));
+  };
+
+  var createPlanetOption = function(planet) {
+    var option = createOption(planet);
+    if (isSelectedPlanet(planet)) {
       option.selected = true;
     }
     return option;
   };
-  
-  var onchange = function() {
+
+  var createCyleOption = function(cycle) {
+    var option = createOption(cycle);
+    if (isSelectedCyle(cycle) || isDefaultCycle(cycle)) {
+      option.selected = true;
+    }
+    return option;
+  };
+
+  var createOption = function(model) {
+    var option = document.createElement("option");
+    option.text = model.label;
+    option.model = model;
+    return option;
+  };
+
+  var isSelectedPlanet = function(model) {
+    return model.id === localStorage.getItem("planetId");
+  };
+
+  var isSelectedCyle = function(model) {
+    return model.id === localStorage.getItem("cycleId");
+  };
+
+  var isDefaultCycle = function(model) {
+    return localStorage.getItem("cycleId") == null && "isDefault" in model;
+  };
+
+  var onPlanetChange = function() {
     var planet = getSelectedPlanet();
     localStorage.setItem("g", planet.g);
     localStorage.setItem("fuel", planet.fuel);
     localStorage.setItem("planetId", planet.id);
   }
+
+  var onCycleChange = function() {
+    var cycle = getSelectedCycle();
+    localStorage.setItem("cycle", cycle.time);
+    localStorage.setItem("cycleId", cycle.id);
+  }
   
   var getSelectedPlanet = function() {
-    return select.options[select.selectedIndex].planet;
+    return getSelectedModel(planetSelection);
   };
-  
-  var select = document.getElementById("planet-selection");
-  select.onchange = onchange;
-  fillSelect();
-  
+
+  var getSelectedCycle = function() {
+    return getSelectedModel(cycleSelection);
+  };
+
+  var getSelectedModel = function(selection) {
+    return selection.options[selection.selectedIndex].model;
+  };
+
+  // --- execution block ---
+
+  var planetSelection = document.getElementById("planet-selection");
+  var cycleSelection = document.getElementById("cycle-selection");
+  planetSelection.onchange = onPlanetChange;
+  cycleSelection.onchange = onCycleChange;
+  fillPlanetSelection();
+  fillCycleSelection();
+
 })();

@@ -9,7 +9,7 @@ var LanderMath = (function() {
   var LanderMath = function() {
   
     // const
-    var g = localStorage.getItem("g") || gMoon; // gravitation (m/s**2)
+    var g = parseFloat(localStorage.getItem("g") || gMoon); // gravitation (m/s**2)
     var m = 5000; // mass (kg; without fuel)
     var ve = 3000; // exit velocity (m/s)
     var t = 10; // burning period (s)
@@ -17,7 +17,7 @@ var LanderMath = (function() {
     // var
     var h = 30000; // height (m)
     var v = 1000; // velocity (m/s)
-    var fuel = localStorage.getItem("fuel") || 3000; // kg
+    var fuel = parseInt(localStorage.getItem("fuel") || 3000); // kg
     
     // Calculate v by Tsiolkovsky rocket equation and gravitation.
     // To calculate h we need to integrate the rocket/gravitation equation.
