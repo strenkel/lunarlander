@@ -10,7 +10,6 @@ body {
   margin: 0;
   background-color: black;
   color: white;
-  position: relative;
 }
 
 body.app-page {
@@ -19,6 +18,7 @@ body.app-page {
 
 body.text-page {
   min-height: 100%;
+  position: relative;
 }
 
 /* TAGS */
@@ -37,7 +37,7 @@ select {
   width: 10em;
 }
 
-select option {
+select option { 
   padding-top: 0.2em;
   height: 1.4em;
   border-right: 1px solid white;
@@ -93,10 +93,20 @@ select option:last-child {
 
 .content {
   max-width: 40em;
-  margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.app-page .content {
   display: table;
   height: 90%;
   width: 100%;
+}
+
+.text-page .content {
+  text-align: center;
+  padding: 8em 0;
+  line-height: 1.8em;
 }
 
 .content-center {
@@ -108,6 +118,12 @@ select option:last-child {
   vertical-align: middle;
   text-align: center;
 }
+
+.content a, .content a:visited {
+  color: white;
+}
+
+/* SPECIAL ELEMENTS */
 
 #start {
   line-height: 2em;
@@ -129,37 +145,32 @@ select option:last-child {
   display: none;
 }
 
-.text.short {
-  line-height: 1.8em;
-}
-
 .text.title {
   font-size: 1.5em;
   margin-bottom: 1.7em;
 }
 
-.text.long {
-  line-height: 1.8em;
-  max-width: 40em;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 2em;
-}
-
 #language-switch {
   text-align: right;
   cursor: pointer;
-  font-size: 0.5em;
+  font-size: 0.8em;
   max-width: 80em;
+  margin-top: 1em;
+}
+
+#language-switch span {
+  padding: 0.7em;
+}
+
+#language-switch span:hover {
+  text-decoration: underline;
 }
 
 .control {
   font-size: 2em;
 }
 
-.text a,.text a:visited {
-  color: white;
-}
+
 
 .quotation {
  text-align: left;

@@ -8,7 +8,8 @@
   var actualLanguage = defaultLanguage;
   var textEn = document.getElementById("text-en");
   var textDe = document.getElementById("text-de");
-  var languageSwitch = document.getElementById("language-switch");
+  var langEn = document.getElementById("lang-en");
+  var langDe = document.getElementById("lang-de");
 
   var getBrowserLocale = function() {
     if (navigator != null) {
@@ -17,38 +18,30 @@
     return defaultLanguage;
   };
 
-  var isGerman = function(locale) {
+  var isDe = function(locale) {
     if (locale != null) {
       return locale.slice(0,2) === "de";
     }
     return false;
   };
 
-  var showGerman = function() {
+  var showDe = function() {
     textEn.style.display = "none";
     textDe.style.display = "block";
     actualLanguage = "de";
   };
 
-  var showEnglish = function() {
+  var showEn = function() {
     textEn.style.display = "block";
     textDe.style.display = "none";
     actualLanguage = "en";
   };
 
-  var switchLanguage = function() {
-    if (actualLanguage === "en") {
-      showGerman();
-    } else {
-      showEnglish();
-    }
-  };
-
   var chooseLanguage = function(locale) {
-    if (isGerman(locale)) {
-      showGerman();
+    if (isDe(locale)) {
+      showDe();
     } else {
-      showEnglish();
+      showEn();
     }
   };
 
@@ -73,6 +66,7 @@
     chooseLanguage(getBrowserLocale());
   }
 
-  languageSwitch.onclick = switchLanguage;
+  langDe.onclick = showDe;
+  langEn.onclick = showEn;
 
 })();
