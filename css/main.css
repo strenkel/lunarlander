@@ -125,6 +125,10 @@ select option:last-child {
 
 /* SPECIAL ELEMENTS */
 
+.navigation a.active, #footer a.active {
+  text-decoration: underline;
+} 
+
 #start {
   line-height: 2em;
   padding-left: 1.5em;
@@ -169,8 +173,6 @@ select option:last-child {
 .control {
   font-size: 2em;
 }
-
-
 
 .quotation {
  text-align: left;
