@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
   "use strict";
 
@@ -7,27 +7,28 @@
   var contentNode = document.getElementById("control");
   var keyboardNode = document.getElementById("keyboard");
   var fuelInputNodeTemplate = document.getElementById("fuel-input-template");
+  var header = document.getElementById("header");
+
 
   var fuelInputNode;
   var landerMath;
 
   var isTouch = 'ontouchstart' in window;
-
   var cycle = 10;
   var delay = (cycle / 4) * 1000;
 
   var initKeyboard = function() {
-    for (var i=0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
       document.getElementById("nr" + i).ontouchstart = (function(nr) {
         return function() {
           fuelInputNode.value = fuelInputNode.value + nr;
         }
       })(i);
     }
+    document.getElementById("enter").ontouchstart = land;
   }
 
   var showStartPage = function() {
-    hideLabel();
     showStartButton();
   };
 
@@ -37,12 +38,10 @@
   };
 
   var showSpeed = function() {
-    hideLabel();
     showValue(landerMath.getSpeed(), "m/s");
   };
 
   var showFuel = function() {
-    hideLabel();
     showValue(landerMath.getFuel(), "kg");
   };
 
@@ -56,7 +55,6 @@
   };
 
   var showResult = function() {
-    hideLabel();
     var v = landerMath.getSpeed();
     var speedLabel;
     if (v <= 3) {
@@ -145,8 +143,7 @@
     showHeight();
     var promise0 = waitAndDo(showSpeed);
     var promise1 = waitAndDo(showFuel, promise0);
-    var promise2 = waitAndDo(showFuelInput, promise1);
-    waitAndDo(brake, promise2);
+    waitAndDo(showFuelInput, promise1);
   };
 
   var waitAndDo = function(callback, promise) {
@@ -155,7 +152,7 @@
         resolve();
       });
     }
-    var newPromise = new Promise(function(resolve) {
+    return new Promise(function(resolve) {
       promise.then(function() {
         setTimeout(function() {
           callback();
@@ -163,11 +160,16 @@
         }, delay);
       });
     });
-    return newPromise;
   };
 
   if (isTouch) {
     initKeyboard();
+  } else {
+    document.onkeypress = function(e) {
+      if (e.keyCode == 13) {
+        brake();
+      }
+    };
   }
 
   showStartPage();
