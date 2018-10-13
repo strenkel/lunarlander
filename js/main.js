@@ -53,6 +53,7 @@
   };
 
   var showResult = function() {
+    hideLabel();
     var v = landerMath.getSpeed();
     var speedLabel;
     if (v <= 3) {
