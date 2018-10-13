@@ -7,13 +7,12 @@
   var contentNode = document.getElementById("control");
   var keyboardNode = document.getElementById("keyboard");
   var fuelInputNodeTemplate = document.getElementById("fuel-input-template");
-  var header = document.getElementById("header");
-
 
   var fuelInputNode;
   var landerMath;
 
   var isTouch = 'ontouchstart' in window;
+
   var cycle = 10;
   var delay = (cycle / 4) * 1000;
 
@@ -25,7 +24,6 @@
         }
       })(i);
     }
-    document.getElementById("enter").ontouchstart = land;
   }
 
   var showStartPage = function() {
@@ -143,7 +141,8 @@
     showHeight();
     var promise0 = waitAndDo(showSpeed);
     var promise1 = waitAndDo(showFuel, promise0);
-    waitAndDo(showFuelInput, promise1);
+    var promise2 = waitAndDo(showFuelInput, promise1);
+    waitAndDo(brake, promise2);
   };
 
   var waitAndDo = function(callback, promise) {
@@ -164,12 +163,6 @@
 
   if (isTouch) {
     initKeyboard();
-  } else {
-    document.onkeypress = function(e) {
-      if (e.keyCode == 13) {
-        brake();
-      }
-    };
   }
 
   showStartPage();

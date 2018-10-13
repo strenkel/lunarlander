@@ -54,14 +54,14 @@ select option:last-child {
   background-color: black;
   width: 100%;
   text-align: center;
-  top: 3em;
+  top: 4em;
 }
 
 #header a {
   color: #fff;
   text-decoration: none;
   margin: 0.3em;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 /* KEYBOARD */
@@ -110,7 +110,7 @@ select option:last-child {
 
 .text-page .content {
   text-align: center;
-  padding: 13em 6%;
+  padding: 12em 6% 7em 6%;
   line-height: 2em;
 }
 
@@ -215,29 +215,26 @@ select option:last-child {
 }
 
 
-@media (max-height: 30em) {
+@media (max-height: 40em) {
   .keyboard {
     margin-top: 3em;
   }
   #header {
-    top: 1.7em;
+    top: 2em;
+  }
+  .text-page .content {
+    padding-top: 9em;
   }
 }
 
-@media (max-height: 23em) {
+@media (max-height: 25em) {
   .keyboard {
-    margin-top: 0.5em;
+    margin-top: 1em;
   }
   .content-center {
     padding-top: 3em;
   }
   #header {
     top: 0.5em;
-  }
-}
-
-@media (max-width: 20em) {
-  #header a {
-    font-size: 2em;
   }
 }
