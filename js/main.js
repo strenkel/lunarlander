@@ -13,8 +13,17 @@
 
   var isTouch = 'ontouchstart' in window;
 
-  var cycle = 10;
-  var delay = (cycle / 4) * 1000;
+  var delays = [2333, 2333, 2333, 3000]; // sum should be 10 sec
+  var phase = 0;
+
+  var getDelay = function() {
+    var delay = delays[phase];
+    phase++;
+    if (phase === 4) {
+      phase =0;
+    }
+    return delay;
+  };
 
   var initKeyboard = function() {
     for (var i = 0; i < 10; i++) {
@@ -157,7 +166,7 @@
         setTimeout(function() {
           callback();
           resolve();
-        }, delay);
+        }, getDelay());
       });
     });
   };
