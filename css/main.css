@@ -61,7 +61,7 @@ select option:last-child {
   color: #fff;
   text-decoration: none;
   margin: 0.3em;
-  font-size: 2em;
+  font-size: 3em;
 }
 
 /* KEYBOARD */
@@ -97,7 +97,7 @@ select option:last-child {
 }
 
 .content {
-  max-width: 40em;
+  max-width: 36em;
   margin-right: auto;
   margin-left: auto;
 }
@@ -112,6 +112,7 @@ select option:last-child {
   text-align: center;
   padding: 12em 6% 7em 6%;
   line-height: 2em;
+  font-size: 1.2em;
 }
 
 .content-center {
@@ -199,8 +200,8 @@ select option:last-child {
   width: 100%;
   background-color: #424242; /* grey 800 */
   color: white;
-  height: 2em;
-  line-height: 2em;
+  height: 3em;
+  line-height: 3em;
   text-align: center;
 }
 
@@ -214,20 +215,36 @@ select option:last-child {
   text-decoration: underline;
 }
 
+@media (max-width: 400px) {
+  #header a {
+    font-size: 2em;
+  }
+  .text-page .content {
+    font-size: 1em;
+  }
+}
 
-@media (max-height: 40em) {
+@media (max-height: 640px) {
   .keyboard {
     margin-top: 3em;
   }
   #header {
     top: 2em;
   }
+  #header a {
+    font-size: 2em;
+  }
   .text-page .content {
     padding-top: 9em;
+    font-size: 1em;
+  }
+  #footer {
+    height: 2em;
+    line-height: 2em;
   }
 }
 
-@media (max-height: 25em) {
+@media (max-height: 400px) {
   .keyboard {
     margin-top: 1em;
   }
