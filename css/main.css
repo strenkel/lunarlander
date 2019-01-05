@@ -203,6 +203,7 @@ select option:last-child {
   height: 3em;
   line-height: 3em;
   text-align: center;
+  font-size: 1.2em;
 }
 
 #footer a {
@@ -215,11 +216,14 @@ select option:last-child {
   text-decoration: underline;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   #header a {
     font-size: 2em;
   }
   .text-page .content {
+    font-size: 1em;
+  }
+  #footer {
     font-size: 1em;
   }
 }
@@ -235,23 +239,24 @@ select option:last-child {
     font-size: 2em;
   }
   .text-page .content {
-    padding-top: 9em;
+    padding-top: 8em;
     font-size: 1em;
   }
   #footer {
     height: 2em;
     line-height: 2em;
+    font-size: 1em;
   }
 }
 
-@media (max-height: 400px) {
+@media (max-height: 360px) {
   .keyboard {
     margin-top: 1em;
   }
   .content-center {
     padding-top: 3em;
   }
-  #header {
+  .app-page #header {
     top: 0.5em;
   }
 }
