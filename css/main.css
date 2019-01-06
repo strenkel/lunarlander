@@ -73,8 +73,8 @@ select option:last-child {
 }
 
 .keyboard div {
- text-align: center;
- line-height: 3em;
+  text-align: center;
+  line-height: 3em;
 }
 
 .keyboard span {
@@ -83,11 +83,11 @@ select option:last-child {
   width: 20%;
   margin: -1px;
   max-width: 6em;
-}
-
-.keyboard span.double {
-  width: 40%;
-  max-width: 12em;
+  cursor: pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
 }
 
 /* CONTENT */

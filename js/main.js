@@ -16,24 +16,34 @@
   var delays = [2333, 2333, 2333, 3000]; // sum should be 10 sec
   var phase = 0;
 
-  var getDelay = function() {
-    var delay = delays[phase];
-    phase++;
-    if (phase === 4) {
-      phase =0;
+  // Helper function to init onclick as well as ontouch
+  var onclick = function(elm, func) {
+    var myFunc = function() {
+      func();
+      return false;
     }
-    return delay;
+    elm.onclick = myFunc;
+    elm.ontouchstart = myFunc;
   };
 
   var initKeyboard = function() {
     for (var i = 0; i < 10; i++) {
-      document.getElementById("nr" + i).ontouchstart = (function(nr) {
+      onclick(document.getElementById("nr" + i), (function(nr) {
         return function() {
           fuelInputNode.value = fuelInputNode.value + nr;
         }
-      })(i);
+      })(i));
     }
-  }
+  };
+
+  var getDelay = function() {
+    var delay = delays[phase];
+    phase++;
+    if (phase === 4) {
+      phase = 0;
+    }
+    return delay;
+  };
 
   var showStartPage = function() {
     showStartButton();
