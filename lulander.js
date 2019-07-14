@@ -26,14 +26,17 @@ const round = function(x, d) {
 var A; // Altitude
 var V; // Velocity, miles per second
 var W; // Velocity, miles per hour
-var M;
-var N;
+var M; // Total Weight, LBS
+var N; // CAPSULE WEIGHT, LBS
 var G;
 var Z;
 var L = 0; // Time: 0, 10, 20, ...
 var I = 0;
-var K; // Fuel Rate
+var K; // Fuel Rate, LBS/SEC
 var S;
+var J;
+var Q;
+var T;
 
 // 1.04 - 1.50
 const intro = function() {
@@ -56,7 +59,7 @@ const start = function() {
   console.log("COMMENCE LANDING PROCEDURE");
   console.log("TIME,SECS   ALTITUDE,MILES+FEET   VELOCITY,MPH   FUEL,LBS   FUEL RATE");
   A = 120; V = 1; M = 32500; N = 16500; G = 0.001; Z = 1.8;
-  L = 0; I = 0;
+  L = 0; I = 0; J = 0;
 
   nextIteration();
 };
@@ -82,7 +85,6 @@ const nextIteration = function() {
 const calculateNextIteration = function() {
   // 3.10
   while (true) {
-
     if (M - N - 0.001 < 0) {
       fuelOut(); // fuel out
       return;
@@ -106,12 +108,13 @@ const calculateNextIteration = function() {
       return;
     }
     if (V > 0 && J < 0) {
-      f8();
-      return;
+      var result = f8();
+      if (result === "break") {
+        return;
+      }
+    } else {
+      f6();
     }
-
-    // 3.80
-    f6();
   }
 };
 
@@ -192,17 +195,16 @@ const f7 = function() {
 
 const f8 = function() {
   while (true) {
-    W = (1 - M * G / Z * K) / 2;
+    W = (1 - M * G / (Z * K)) / 2;
     S = M * V / (Z * K * (W + Math.sqrt(W * W + V / Z))) + 0.05;
     f9();
     if (I <= 0) {
       f7();
-      return;
+      return "break";
     }
     f6();
-    if (J >= 0 || V <= 0) {
-      calculateNextIteration();
-      return;
+    if ( J >= 0 || V <= 0) {
+      return "continue";
     }
   }
 };
@@ -214,9 +216,3 @@ const f9 = function() {
 };
 
 intro();
-
-//readline.close();
-
-// process.stdin.on('data', function(data) {
-//   console.log(data);
-// });
