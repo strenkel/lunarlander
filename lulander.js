@@ -77,12 +77,12 @@ const nextIteration = function() {
   rl.question(out, function(input) {
 
     K = Number.parseInt(input);
-    T = 10;
     calculateNextIteration();
   });
 };
 
 const calculateNextIteration = function() {
+  T = 10;
   // 3.10
   while (true) {
     if (M - N - 0.001 < 0) {
