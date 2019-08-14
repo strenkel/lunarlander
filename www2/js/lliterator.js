@@ -1,4 +1,8 @@
-const createLLIterator = function() {
+if (!exports) {
+  exports = {};
+}
+
+exports.createLLIterator = function() {
 
   // Initial values; state of the iterator
   var L = 0; // Time (seconds)
@@ -159,9 +163,3 @@ const createLLIterator = function() {
   }
 
 };
-
-if (!exports) {
-  exports = {};
-}
-
-exports.createLLIterator = createLLIterator;

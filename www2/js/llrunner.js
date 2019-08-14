@@ -1,7 +1,6 @@
 const createLLIterator = require('./lliterator.js').createLLIterator;
-console.log(createLLIterator);
-const readline = require('readline');
 
+const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -61,21 +60,8 @@ const doLanding = function() {
     if (next.done) {
       printResult(next.value);
     }
-
-    var L = next.value.time;
-    var A = next.value.altitude;
-    var V = next.value.velocity;
-    var MN = next.value.fuel;
-
-    // 2.10 - 2.20
-    var l = Math.round(L).toString().padStart(8, " ");
-    var aMiles = Math.floor(A).toString().padStart(15, " ");
-    var aFeet = Math.round((5280 * (A - Math.floor(A)))).toString().padStart(7, " ");
-    var v = round(3600 * V, 2).padStart(15, " ");
-    var fuel = round(MN, 1).padStart(12, " ");
-    var output = `${l}${aMiles}${aFeet}${v}${fuel}      K=:`;
-
-    Logger.prompt(output, function(input) {
+ 
+    Logger.prompt(getResultLine(next.value), function(input) {
       validateInput(input, nextStep);
     });
   };
@@ -92,6 +78,25 @@ const validateInput = function(input, callback) {
       validateInput(nextInput, callback);
     });
   }
+};
+
+/**
+ * @param {*} value
+ * @returns {String} 
+ */
+const getResultLine = function(value) {
+  var L = value.time;
+  var A = value.altitude;
+  var V = value.velocity;
+  var MN = value.fuel;
+
+  // 2.10 - 2.20
+  var l = Math.round(L).toString().padStart(8, " ");
+  var aMiles = Math.floor(A).toString().padStart(15, " ");
+  var aFeet = Math.round((5280 * (A - Math.floor(A)))).toString().padStart(7, " ");
+  var v = round(3600 * V, 2).padStart(15, " ");
+  var fuel = round(MN, 1).padStart(12, " ");
+  return `${l}${aMiles}${aFeet}${v}${fuel}      K=:`;
 };
 
 const printResult = function(value) {
